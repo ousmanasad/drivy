@@ -240,3 +240,40 @@ function getFinalPrice2()
     console.log(rentals[i].price);
   }
 }
+
+//---------------Question 3--------------//
+
+function getCommission()
+{
+  var price;
+  var commission;
+  var insurance;
+  var roadsideAssisst;
+  var drivy;
+  
+  var timeDiff;
+  var diffDays;
+  
+  
+  for(var i = 0; i < rentals.length; i++) 
+  {
+
+    timeDiff = convertDate(rentals[i].returnDate).getTime() - convertDate(rentals[i].pickupDate).getTime();
+    diffDays = (((timeDiff /1000)/3600)/24) + 1;
+
+    price = rentals[i].price;
+    commission = price * 0.30;
+    insurance = commission / 2;
+    
+    roadsideAssisst = diffDays;
+    
+    drivy = commission - (insurance + roadsideAssisst);
+    
+    rentals[i].commission.insurance = insurance;
+    rentals[i].commission.assistance = roadsideAssisst;
+    rentals[i].commission.drivy = drivy;
+    
+    console.log(rentals[i].commission);
+  }
+}
+
