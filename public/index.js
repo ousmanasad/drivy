@@ -277,3 +277,22 @@ function getCommission()
   }
 }
 
+//---------------Question 4--------------//
+
+function getDeductibleOption()
+{
+  var timeDiff;
+  var diffDays;
+  
+  for(var i = 0; i < rentals.length; i++) 
+  {
+    timeDiff = convertDate(rentals[i].returnDate).getTime() - convertDate(rentals[i].pickupDate).getTime();
+    diffDays = (((timeDiff /1000)/3600)/24) + 1;
+  
+    if (rentals[i].options.deductibleReduction == true)
+    {
+      rentals[i].price = rentals[i].price + (diffDays * 4);
+    }
+    console.log(rentals[i].price);
+  }
+}
