@@ -296,3 +296,22 @@ function getDeductibleOption()
     console.log(rentals[i].price);
   }
 }
+
+//---------------Question 5--------------//
+
+function getPaymentActors()
+{
+  for(var i = 0; i < actors.length; i++) 
+  {
+    actors[i].payment[0].amount = rentals[i].price; //driver
+    actors[i].payment[1].amount = rentals[i].price - (rentals[i].price * 0.30); //owner
+    actors[i].payment[2].amount = rentals[i].commission.insurance; //insurace
+    actors[i].payment[3].amount = rentals[i].commission.assistance; //assistance
+    actors[i].payment[4].amount = rentals[i].commission.drivy; //drivy
+    
+    for (var j = 0; j < 5; j++)
+    {
+      console.log(actors[i].payment[j].amount);
+    }
+  }
+}
