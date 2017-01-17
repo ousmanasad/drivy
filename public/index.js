@@ -169,3 +169,31 @@ console.log(cars);
 console.log(rentals);
 console.log(actors);
 console.log(rentalModifications);
+
+function convertDate(str)
+{
+  var re=/[0-9]+/g;
+  var result = re[Symbol.match](str);
+  var dateLoc=new Date(result[0],result[1],result[2]);
+  return dateLoc;
+}
+
+//---------------Question 1--------------//
+
+function getFinalPrice()
+{
+  for(var i = 0; i<rentals.length; i++)
+  {
+    timeDiff = convertDate(rentals[i].returnDate).getTime() - convertDate(rentals[i].pickupDate).getTime();
+    diffDays = (((timeDiff /1000)/3600)/24) + 1;
+
+    for(var j=0; j<cars.length;j++)
+    {
+      if(rentals[i].carId == cars[j].id )
+      {
+        rentals[i].price = cars[j].pricePerDay*diffDays + cars[j].pricePerKm*rentals[i].distance;
+      }
+    }
+    console.log(rentals[i].price); 
+  }
+}
