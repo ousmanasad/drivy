@@ -318,3 +318,43 @@ function getPaymentActors()
     }
   }
 }
+
+//---------------Question 6--------------//
+
+function Search(stringModification)
+ {
+   for (var i = 0; i < rentals.length; i++)
+   {
+     if (rentals[i].id == stringModification)
+     {
+       return i;
+     }
+   }
+ } 
+
+ function getNewPaymentActors()
+ {
+   for (var i = 0; i < rentalModifications.length; i++)
+   {
+    if (rentalModifications[i].pickupDate)
+    {
+      rentals[Search(rentalModifications[i].rentalId)].pickupDate = rentalModifications[i].pickupDate;
+    }
+    if (rentalModifications[i].distance)
+    {
+      rentals[Search(rentalModifications[i].rentalId)].distance = rentalModifications[i].distance;
+    }
+    if (rentalModifications[i].returnDate)
+    {
+      rentals[Search(rentalModifications[i].rentalId)].returnDate = rentalModifications[i].returnDate;
+    }
+   }
+   
+   //Il Faut recompiler toute les fonctions suivantes pour recalculer avec les modifications : 
+   getFinalPrice();
+   getFinalPrice2();
+   getCommission();
+   getDeductibleOption();
+   getPaymentActors();
+   console.log(actors);
+ }
