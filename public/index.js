@@ -182,6 +182,9 @@ function convertDate(str)
 
 function getFinalPrice()
 {
+  var timeDiff;
+  var diffDays;
+
   for(var i = 0; i<rentals.length; i++)
   {
     timeDiff = convertDate(rentals[i].returnDate).getTime() - convertDate(rentals[i].pickupDate).getTime();
